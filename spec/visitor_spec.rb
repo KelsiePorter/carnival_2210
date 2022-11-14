@@ -2,6 +2,8 @@ require './lib/visitor'
 
 RSpec.describe Visitor do 
   let(:visitor1) { Visitor.new('Bruce', 54, '$10') }
+  let(:visitor2) { Visitor.new('Tucker', 36, '$5') }
+  let(:visitor3) { Visitor.new('Penny', 64, '$15') }
 
   it 'exists and has attributes' do 
     expect(visitor1.name).to eq('Bruce')
@@ -15,5 +17,9 @@ RSpec.describe Visitor do
     visitor1.add_preference(:water)
 
     expect(visitor1.preferences).to eq([:gentle, :water])
+  end
+
+  it 'can check if a vistor is tall enough' do 
+    
   end
 end
