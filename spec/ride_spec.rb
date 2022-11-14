@@ -84,4 +84,26 @@ RSpec.describe Ride do
     expect(ride3.rider_log).to eq(visitor3 => 1)
     expect(ride3.total_revenue).to eq(2)
   end
+
+  it 'can return the total number of times a ride was ridden' do 
+    visitor1 = Visitor.new('Bruce', 54, '$10')
+    visitor2 = Visitor.new('Tucker', 36, '$5')
+    visitor3 = Visitor.new('Penny', 64, '$15')
+    visitor1.add_preference(:gentle)
+    visitor2.add_preference(:gentle)
+    visitor2.add_preference(:thrilling)
+    visitor3.add_preference(:thrilling)
+    visitor3.add_preference(:gentle)
+    ride1.board_rider(visitor1)
+    ride1.board_rider(visitor1)
+    ride1.board_rider(visitor2)
+    ride2.board_rider(visitor1)
+    ride2.board_rider(visitor2)
+    ride3.board_rider(visitor2)
+    ride3.board_rider(visitor3)
+
+    expect(ride1.total_times_ridden).to eq(3)
+    expect(ride2.total_times_ridden).to eq(2)
+    expect(ride3.total_times_ridden).to eq(1)
+  end
 end
