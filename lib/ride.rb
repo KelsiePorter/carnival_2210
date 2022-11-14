@@ -16,9 +16,11 @@ class Ride
   end
 
   def board_rider(visitor)
-    @rider_log[visitor] += 1
-    reduce_spending_money(visitor)
-    increase_total_revenue
+    if meets_requirements?(visitor)
+      @rider_log[visitor] += 1
+      reduce_spending_money(visitor)
+      increase_total_revenue
+    end
   end
 
   def reduce_spending_money(visitor)
@@ -27,5 +29,9 @@ class Ride
 
   def increase_total_revenue
     @total_revenue += @admission_fee
+  end
+
+  def meets_requirements?(visitor)
+    visitor.height >= @min_height && visitor.preferences.include?(@excitement)
   end
 end
