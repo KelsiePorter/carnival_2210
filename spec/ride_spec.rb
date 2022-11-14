@@ -63,7 +63,7 @@ RSpec.describe Ride do
     expect(ride1.total_revenue).to eq(3)
   end
 
-  it '' do
+  it 'can return a riders new spending money total after paying for a ride' do
     visitor1 = Visitor.new('Bruce', 54, '$10')
     visitor2 = Visitor.new('Tucker', 36, '$5')
     visitor3 = Visitor.new('Penny', 64, '$15')

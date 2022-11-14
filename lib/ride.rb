@@ -32,14 +32,11 @@ class Ride
   end
 
   def meets_requirements?(visitor)
-    visitor.height >= @min_height && visitor.preferences.include?(@excitement)
+    visitor.height >= @min_height && 
+      visitor.preferences.include?(@excitement)
   end
 
   def total_times_ridden
-    total = 0
-    @rider_log.each do |rider, num|
-      total += @rider_log[rider]
-    end
-    total
+    @rider_log.values.sum 
   end
 end
